@@ -1,0 +1,34 @@
+Index,Operation,Argument,Opcode,Description
+0,No Op,Implied,00,No Operation
+1,Push to stack,Constant,01,Push Constant value to stack
+2,Push to stack,Register,02,Push register value to stack
+3,Push to stack,IOBuffer,03,Push conent in IOBuffer to stack
+4,Pop from stack,Register,04,Pops value from stack and stores it in register
+5,Pop from stack,IOBuffer,05,Pops value from stack and stores it into IOBuffer
+6,Duplicate top of stack,Implied,06,Duplicates Top value on stack
+7,Drop top of stack,Implied,07,Discards top value on stack
+8,Compare,Implied,08,"Peaks at top two values on stack. compares the two and sets flags. if T > T-1 then Z, C = 0 if T < T-1 then Z = 0, C = 1 if T = T-1 Z = 1, C = 0 "
+9,Peak top of stack,Register,09,stores top of stack in register without modifying stack pointer
+10,Peak top of stack,IOBuffer,0A,stores top of stack in IOBuffer without modifying stack pointer
+11,"Add top two of stack, push result",Implied,0B,"pops top two of stack, adds them, pushes the result. (T + T-1)"
+12,Add top of stack to register,Register,0C,"pops top of stack, adds it to register"
+13,Add constant to register,Constant,0D,adds constant to register
+14,"Sub top two of stack, push result",Implied,0E,"pops top two of stack, subtracts them, pushes the result. (T - T-1)"
+15,Sub top of stack from register,Register,0F,"pops top of stack, subtracts it from register"
+16,Sub constant from register,Constant,10,subtracts constant from register
+17,Set flip stack,Implied,11,sets the FlippedStack flag
+18,Clear flip stack,Implied,12,clears the FlippedStack flag
+19,Clear IOBuffer,Implied,13,Clears the IOBuffer
+20,Jump if zero,Address,14,Jumps to address if Zero flag set
+21,Jump if not zero,Address,15,Jumps to address if Zero flag clear
+22,Jump if carry,Address,16,Jumps to address if Carry flag set
+23,Jump if not carry,Address,17,Jumps to address if Carry flag clear
+24,Jump if stack flipped,Address,18,Jumps to address if FlippedStack flag set
+25,Jump if stack not flipped,Address,19,Jumps to address if FlippedStack flag clear
+26,Jump Unconditional,Address,1A,Jumps to address
+27,Input,Implied,1B,"Gets input from user, stores it in IOBuffer"
+28,Output as ascii,Implied,1C,Outputs the content of IOBuffer as ASCII
+29,Output as number,Implied,1D,Outputs the content of IOBuffer as Number
+30,Jump Subroutine,Address,1E,"Jumps to address, stores return address"
+31,Return Subroutine,Implied,1F,Jumps to return address stored
+32,Halt,Implied,20,Halts program
