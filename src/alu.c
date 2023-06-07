@@ -4,12 +4,12 @@
 uint8_t flopAdd(uint8_t a, uint8_t b, uint8_t *flags){
     uint8_t f = *flags;
     uint8_t carryIn = checkFlag(f, CARRY_FLAG);
-    if((((uint16_t) a) + b + carryIn) > 255){
+    uint8_t sum = (a + b + carryIn);
+    if(sum < a || sum < b){
         setFlag(flags, CARRY_FLAG);
     } else {
         clearFlag(flags, CARRY_FLAG);
     }
-    uint8_t sum = (a + b + carryIn);
     if(sum == 0){
         setFlag(flags, ZERO_FLAG);
     } else {
@@ -21,12 +21,12 @@ uint8_t flopAdd(uint8_t a, uint8_t b, uint8_t *flags){
 uint8_t flopSubtract(uint8_t a, uint8_t b, uint8_t *flags){
     uint8_t f = *flags;
     uint8_t carryIn = 1 - checkFlag(f, CARRY_FLAG);
-    if((a - (b + carryIn)) < 0){
+    uint8_t dif = ((uint16_t)(a) - (b + carryIn));
+    if(dif > a || dif > b){
         setFlag(flags, CARRY_FLAG);
     } else {
         clearFlag(flags, CARRY_FLAG);
     }
-    uint8_t dif = ((uint16_t)(a) - (b + carryIn));
     if(dif == 0){
         setFlag(flags, ZERO_FLAG);
     } else {
